@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="style.css">
+<form id="pedidoForm">
+    <h1>Enviar Pedido</h1>
+  <input type="text" id="cliente" placeholder="Nome do cliente" required>
+  <input type="number" id="valor" placeholder="Valor do pedido" required min="0.01" step="0.01">
+  <button type="submit">Enviar Pedido</button>
+  <div id="erro" style="color:red"></div>
+  <a class="link" href="pedidos.html">Ver pedidos recebidos</a>
+</form>
+<script>
+document.getElementById('pedidoForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const cliente = document.getElementById('cliente').value.trim();
+  const valor = parseFloat(document.getElementById('valor').value);
+  const erro = document.getElementById('erro');
+
+  if (!cliente) {
+    erro.textContent = 'O nome do cliente é obrigatório.';
+    return;
+  }
+  if (isNaN(valor) || valor <= 0) {
+    erro.textContent = 'O valor do pedido deve ser maior que zero.';
+    return;
+  }
+  erro.textContent = '';
+
+  fetch('http://localhost:3000/pedidos', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cliente, valor })
+  })
+  .then(res => res.json())
+  .then(data => alert('Pedido enviado!'))
+  .catch(() => erro.textContent = 'Erro ao enviar pedido.');
+});
+</script>

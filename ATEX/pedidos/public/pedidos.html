@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="pedidos.css">
+
+<div class="container">
+  <h2>Pedidos Recebidos</h2>
+  <ul id="listaPedidos"></ul>
+  <a class="voltar" href="index.html">Voltar</a>
+</div>
+<script>
+  function carregarPedidos() {
+    fetch('http://localhost:3000/pedidos')
+      .then(res => res.json())
+      .then(pedidos => {
+        const lista = document.getElementById('listaPedidos');
+        lista.innerHTML = '';
+        pedidos.forEach(p => {
+          const li = document.createElement('li');
+          li.textContent = `Cliente: ${p.cliente} | Valor: ${p.valor}`;
+          lista.appendChild(li);
+        });
+      })
+      .catch(() => {
+        document.getElementById('listaPedidos').innerHTML = '<li>Erro ao carregar pedidos.</li>';
+      });
+  }
+  setInterval(carregarPedidos, 2000);
+  carregarPedidos();
+</script>

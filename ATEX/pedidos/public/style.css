@@ -1,0 +1,103 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container do formulário */
+#pedidoForm {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 4vw;
+  background: #f9f9f9;
+  border-radius: 2vw;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
+}
+
+/* Inputs */
+#pedidoForm input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
+  width: 20vw;
+}
+
+#pedidoForm input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+/* Botão */
+#pedidoForm button {
+  padding: 12px;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  width: 20vw;
+}
+
+#pedidoForm button:hover {
+  background: linear-gradient(135deg, #0056d2, #0041a8);
+  transform: scale(1.02);
+}
+
+/* Mensagem de erro */
+#pedidoForm #erro {
+  font-size: 14px;
+  color: red;
+  text-align: center;
+  min-height: 18px;
+}
+
+/* 📱 Responsividade */
+@media (max-width: 768px) {
+  #pedidoForm {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  #pedidoForm input,
+  #pedidoForm button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #pedidoForm {
+    margin: 20px auto;
+    border-radius: 8px;
+  }
+
+  #pedidoForm button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s;
+}

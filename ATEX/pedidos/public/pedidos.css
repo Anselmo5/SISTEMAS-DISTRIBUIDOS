@@ -1,0 +1,86 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  /* Lista de pedidos */
+  #listaPedidos {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #listaPedidos li {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    font-size: 16px;
+    color: #444;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  #listaPedidos li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Botão voltar */
+  .voltar {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+    text-decoration: none;
+    background: linear-gradient(135deg, #007bff, #0056d2);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+    width: 10vw;
+    text-align: center;
+  }
+
+  .voltar:hover {
+    background: linear-gradient(135deg, #0056d2, #0041a8);
+    transform: scale(1.05);
+  }
+
+  /* 📱 Responsividade */
+  @media (max-width: 768px) {
+    #listaPedidos li {
+      font-size: 14px;
+      padding: 12px 15px;
+    }
+
+    .voltar {
+      font-size: 14px;
+      padding: 8px 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 15px;
+    }
+
+    #listaPedidos {
+      gap: 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+  }

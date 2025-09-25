@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat com Socket.IO</title>
+  <style>
+    body { font-family: Arial; }
+    #messages { list-style: none; padding: 0; }
+    #messages li { padding: 5px 10px; }
+    #form { display: flex; }
+    #input { flex: 1; padding: 5px; }
+    #send { padding: 5px 10px; }
+  </style>
+</head>
+<body>
+  <h2>Chat em tempo real</h2>
+  <ul id="messages"></ul>
+  <form id="form">
+    <input id="input" autocomplete="off" placeholder="Digite sua mensagem..." />
+    <button id="send">Enviar</button>
+  </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (input.value) {
+        socket.emit('chat message', input.value);
+        input.value = '';
+      }
+    });
+
+    socket.on('chat message', function(msg) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      messages.appendChild(li);
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  </script>
+</body>
+</html>
